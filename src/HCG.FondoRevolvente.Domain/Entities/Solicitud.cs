@@ -21,6 +21,7 @@ public class Solicitud
     public string? BloqueadoPor { get; private set; }
     public DateTime? BloqueadoDesde { get; private set; }
     public List<Partida> Partidas { get; private set; } = new();
+    public List<Cotizacion> Cotizaciones { get; private set; } = new();
 
     // --- 2. VALIDACIÓN FINANCIERA (RN-001) ---
     public decimal TotalMonto => Partidas.Sum(p => (decimal)p.Cantidad * p.PrecioUnitario);
