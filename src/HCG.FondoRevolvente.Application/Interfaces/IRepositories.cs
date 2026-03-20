@@ -4,12 +4,11 @@ namespace HCG.FondoRevolvente.Application.Interfaces;
 
 public interface ISolicitudRepository
 {
-    Task<Solicitud?> GetByIdAsync(int id);
-    Task<IEnumerable<Solicitud>> GetAllAsync();
-    Task AddAsync(Solicitud solicitud);
-    Task UpdateAsync(Solicitud solicitud);
-    Task SaveAsync(Solicitud solicitud); // Added as per user's refinement
-    Task DeleteAsync(int id);
+    Task<Solicitud?> ObtenerPorIdAsync(int id);
+    Task<List<Solicitud>> ObtenerTodasAsync();
+    Task AgregarAsync(Solicitud solicitud);
+    Task ActualizarAsync(Solicitud solicitud);
+    Task<bool> ExisteAsync(int id);
 }
 
 public interface IProveedorRepository
