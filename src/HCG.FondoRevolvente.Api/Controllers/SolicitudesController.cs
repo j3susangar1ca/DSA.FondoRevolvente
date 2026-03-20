@@ -8,49 +8,66 @@ namespace HCG.FondoRevolvente.Api.Controllers;
 [Route("api/[controller]")]
 public class SolicitudesController : ControllerBase
 {
-    private readonly ISolicitudService _solicitudService;
+    private readonly SolicitudService _solicitudService;
 
-    public SolicitudesController(ISolicitudService solicitudService)
+    public SolicitudesController(SolicitudService solicitudService)
     {
         _solicitudService = solicitudService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<SolicitudDto>>> GetAll()
+    [HttpPost]
+    public async Task<IActionResult> Crear()
     {
-        var solicitudes = await _solicitudService.GetAllAsync();
-        return Ok(solicitudes);
+        var usuarioSimuladoId = "USR-COMPRADOR-01";
+        var solicitud = await _solicitudService.CrearNuevaSolicitudAsync(usuarioSimuladoId);
+        return CreatedAtAction(nameof(Obtener), new { id = solicitud.Id }, solicitud);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<SolicitudDto>> GetById(int id)
+    public async Task<IActionResult> Obtener(int id)
     {
-        var solicitud = await _solicitudService.GetByIdAsync(id);
-        if (solicitud == null) return NotFound();
-        return Ok(solicitud);
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<SolicitudDto>> Create(CreateSolicitudDto dto)
-    {
-        // For now, using a placeholder user identity. In a real scenario, this would come from JWT claims.
-        var usuarioActualId = "user-123"; 
-        var solicitud = await _solicitudService.CreateAsync(dto, usuarioActualId);
-        return CreatedAtAction(nameof(GetById), new { id = solicitud.Id }, solicitud);
+        try
+        {
+            var solicitud = await _solicitudService.ObtenerSolicitudAsync(id);
+            return Ok(solicitud);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id)
+    public async Task<IActionResult> Actualizar(int id, [FromBody] Solicitud solicitudActualizada)
     {
-        var usuarioActualId = "user-123";
         try
         {
-            await _solicitudService.UpdateAsync(id, usuarioActualId);
-            return NoContent();
+            var usuarioSimuladoId = "USR-COMPRADOR-01";
+            await _solicitudService.ActualizarSolicitudAsync(id, solicitudActualizada, usuarioSimuladoId);
+            return Ok(new { Mensaje = "Expediente actualizado exitosamente." });
         }
-        catch (Exception ex)
+        catch (InvalidOperationException ex)
         {
-            return BadRequest(ex.Message);
+            return BadRequest(new { Error = ex.Message });
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpPatch("{id}/desbloquear")]
+    public async Task<IActionResult> Desbloquear(int id)
+    {
+        try
+        {
+            var usuarioSimuladoId = "USR-COMPRADOR-01";
+            await _solicitudService.DesbloquearSolicitudAsync(id, usuarioSimuladoId);
+            return Ok(new { Mensaje = "Bloqueo liberado exitosamente." });
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
         }
     }
 }
