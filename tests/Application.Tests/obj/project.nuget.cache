@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WtRQKc0ejNvE+DI98xBcTDv9piiC+L2hOZCjpyiY+J1Glt0H+4rPKtql4P3Y7eKan2l6gk99gOCVBfOJ0soxkg==",
+  "dgSpecHash": "6rJc5ZQVa0SRJk2CDmGwsbfV30YCHKs4cLbvaYgiAIMFt+RrEukUIjo32oSC1+FpOll1jApgVJs/zDGEWZmPmg==",
   "success": true,
   "projectFilePath": "/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/tests/Application.Tests/Application.Tests.csproj",
   "expectedPackageFiles": [

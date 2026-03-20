@@ -1712,6 +1712,29 @@
         "build": {
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
+      },
+      "HCG.FondoRevolvente.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "HCG.FondoRevolvente.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HCG.FondoRevolvente.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HCG.FondoRevolvente.Application.dll": {}
+        }
+      },
+      "HCG.FondoRevolvente.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/HCG.FondoRevolvente.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HCG.FondoRevolvente.Domain.dll": {}
+        }
       }
     }
   },
@@ -5507,10 +5530,21 @@
         "xunit.runner.visualstudio.2.4.5.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "HCG.FondoRevolvente.Application/1.0.0": {
+      "type": "project",
+      "path": "../../src/HCG.FondoRevolvente.Application/HCG.FondoRevolvente.Application.csproj",
+      "msbuildProject": "../../src/HCG.FondoRevolvente.Application/HCG.FondoRevolvente.Application.csproj"
+    },
+    "HCG.FondoRevolvente.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../src/HCG.FondoRevolvente.Domain/HCG.FondoRevolvente.Domain.csproj",
+      "msbuildProject": "../../src/HCG.FondoRevolvente.Domain/HCG.FondoRevolvente.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "HCG.FondoRevolvente.Application >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.6.0",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.4.2",
@@ -5541,7 +5575,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/HCG.FondoRevolvente.Application.csproj": {
+              "projectPath": "/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/HCG.FondoRevolvente.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

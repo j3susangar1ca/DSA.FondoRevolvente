@@ -9,10 +9,10 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Solicitud> Solicitudes { get; set; }
-    public DbSet<Proveedor> Proveedores { get; set; }
-    public DbSet<Cotizacion> Cotizaciones { get; set; }
-    public DbSet<Partida> Partidas { get; set; }
+    public DbSet<Solicitud> Solicitudes { get; set; } = null!;
+    public DbSet<Proveedor> Proveedores { get; set; } = null!;
+    public DbSet<Cotizacion> Cotizaciones { get; set; } = null!;
+    public DbSet<Partida> Partidas { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

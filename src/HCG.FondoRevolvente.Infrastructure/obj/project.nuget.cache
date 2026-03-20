@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+EZ023nrLmTNYq945VGdjY32anYXHrZhZzghOU0VP+L+VUxXAJENI7CG7aBId1Gx+wdZ6JO2Dfp5ju+mbnlfog==",
+  "dgSpecHash": "jdcbTXgKjRfUwiUDRg+ADepkUMCBgdCJkpwJ0XCtvjvHPRylNh4rMSoSHLrRsFB0wvquaWocwFX+ZgkscPHmGg==",
   "success": true,
   "projectFilePath": "/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Infrastructure/HCG.FondoRevolvente.Infrastructure.csproj",
   "expectedPackageFiles": [
