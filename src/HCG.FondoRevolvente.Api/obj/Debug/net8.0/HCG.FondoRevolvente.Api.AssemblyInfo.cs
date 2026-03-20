@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HCG.FondoRevolvente.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+296c22e8a168200289d78ac068a6c1e5a69a4853")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+631a2576632796ef690024a8a9bb123684f7f52d")]
 [assembly: System.Reflection.AssemblyProductAttribute("HCG.FondoRevolvente.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HCG.FondoRevolvente.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

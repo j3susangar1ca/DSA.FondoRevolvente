@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using HCG.FondoRevolvente.Domain.Enums;
 using HCG.FondoRevolvente.Domain.Constants;
 
