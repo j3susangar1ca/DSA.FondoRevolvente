@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "HCG.FondoRevolvente.Client",
+  "display": "standalone",
+  "name": "HCG.FondoRevolvente.Client",
+  "short_name": "HCG.FondoRevolvente.Client",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
