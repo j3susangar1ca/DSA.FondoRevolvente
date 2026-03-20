@@ -1,0 +1,12 @@
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/bin/Debug/net8.0/HCG.FondoRevolvente.Domain.deps.json
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/bin/Debug/net8.0/HCG.FondoRevolvente.Domain.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/bin/Debug/net8.0/HCG.FondoRevolvente.Domain.pdb
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.AssemblyInfoInputs.cache
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.AssemblyInfo.cs
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.csproj.CoreCompileInputs.cache
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.sourcelink.json
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/refint/HCG.FondoRevolvente.Domain.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/HCG.FondoRevolvente.Domain.pdb
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/Debug/net8.0/ref/HCG.FondoRevolvente.Domain.dll

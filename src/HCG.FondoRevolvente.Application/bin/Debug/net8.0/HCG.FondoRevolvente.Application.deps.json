@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "HCG.FondoRevolvente.Application/1.0.0": {
+        "dependencies": {
+          "HCG.FondoRevolvente.Domain": "1.0.0"
+        },
+        "runtime": {
+          "HCG.FondoRevolvente.Application.dll": {}
+        }
+      },
+      "HCG.FondoRevolvente.Domain/1.0.0": {
+        "runtime": {
+          "HCG.FondoRevolvente.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HCG.FondoRevolvente.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HCG.FondoRevolvente.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

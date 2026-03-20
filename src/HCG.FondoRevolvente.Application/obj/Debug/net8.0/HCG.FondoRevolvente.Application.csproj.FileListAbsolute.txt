@@ -1,0 +1,16 @@
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/bin/Debug/net8.0/HCG.FondoRevolvente.Application.deps.json
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/bin/Debug/net8.0/HCG.FondoRevolvente.Application.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/bin/Debug/net8.0/HCG.FondoRevolvente.Application.pdb
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/bin/Debug/net8.0/HCG.FondoRevolvente.Domain.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/bin/Debug/net8.0/HCG.FondoRevolvente.Domain.pdb
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.csproj.AssemblyReference.cache
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.AssemblyInfoInputs.cache
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.AssemblyInfo.cs
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.csproj.CoreCompileInputs.cache
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.sourcelink.json
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.csproj.CopyComplete
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/refint/HCG.FondoRevolvente.Application.dll
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/HCG.FondoRevolvente.Application.pdb
+/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Application/obj/Debug/net8.0/ref/HCG.FondoRevolvente.Application.dll
