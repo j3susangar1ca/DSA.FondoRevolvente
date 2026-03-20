@@ -33,7 +33,24 @@ public class SolicitudesController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<SolicitudDto>> Create(CreateSolicitudDto dto)
     {
-        var solicitud = await _solicitudService.CreateAsync(dto);
+        // For now, using a placeholder user identity. In a real scenario, this would come from JWT claims.
+        var usuarioActualId = "user-123"; 
+        var solicitud = await _solicitudService.CreateAsync(dto, usuarioActualId);
         return CreatedAtAction(nameof(GetById), new { id = solicitud.Id }, solicitud);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id)
+    {
+        var usuarioActualId = "user-123";
+        try
+        {
+            await _solicitudService.UpdateAsync(id, usuarioActualId);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }
