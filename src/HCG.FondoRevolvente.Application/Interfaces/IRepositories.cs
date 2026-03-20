@@ -8,6 +8,7 @@ public interface ISolicitudRepository
     Task<IEnumerable<Solicitud>> GetAllAsync();
     Task AddAsync(Solicitud solicitud);
     Task UpdateAsync(Solicitud solicitud);
+    Task SaveAsync(Solicitud solicitud); // Added as per user's refinement
     Task DeleteAsync(int id);
 }
 

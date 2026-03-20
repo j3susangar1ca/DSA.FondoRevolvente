@@ -2,7 +2,6 @@ namespace HCG.FondoRevolvente.Domain.Constants;
 
 public static class LimitesNegocio
 {
-    public const decimal MontoMaximoFondoRevolvente = 75000m;
-    public const int MinimoCotizacionesRequeridas = 3;
-    public const int TiempoExpiracionBloqueoMinutos = 30;
+    public const decimal MONTO_MAXIMO_SOLICITUD = 75000.00m;
+    public const int MINUTOS_EXPIRACION_BLOQUEO = 30;
 }
