@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HCG.FondoRevolvente.Domain\HCG.FondoRevolvente.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
