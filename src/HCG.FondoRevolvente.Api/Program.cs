@@ -17,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Dependency Injection
 builder.Services.AddScoped<ISolicitudRepository, SolicitudRepository>();
 builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
-builder.Services.AddScoped<ISolicitudService, SolicitudService>();
+builder.Services.AddScoped<SolicitudService>();
 
 var app = builder.Build();
 

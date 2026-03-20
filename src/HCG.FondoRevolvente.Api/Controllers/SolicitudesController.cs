@@ -1,5 +1,5 @@
-using HCG.FondoRevolvente.Application.DTOs;
 using HCG.FondoRevolvente.Application.Services;
+using HCG.FondoRevolvente.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HCG.FondoRevolvente.Api.Controllers;
