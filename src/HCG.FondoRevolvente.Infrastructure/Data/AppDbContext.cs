@@ -23,7 +23,6 @@ public class AppDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Folio).IsRequired().HasMaxLength(20);
             entity.HasMany(e => e.Partidas).WithOne().OnDelete(DeleteBehavior.Cascade);
-            entity.HasMany(e => e.Cotizaciones).WithOne().OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<Proveedor>(entity =>
@@ -42,7 +41,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Partida>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Descripcion).IsRequired().HasMaxLength(500);
             entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(18,2)");
         });
     }
