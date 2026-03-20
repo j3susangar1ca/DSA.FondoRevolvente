@@ -42,6 +42,19 @@ public class SolicitudRepository : ISolicitudRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task SaveAsync(Solicitud solicitud)
+    {
+        if (solicitud.Id == 0)
+        {
+            await _context.Solicitudes.AddAsync(solicitud);
+        }
+        else
+        {
+            _context.Solicitudes.Update(solicitud);
+        }
+        await _context.SaveChangesAsync();
+    }
+
     public async Task DeleteAsync(int id)
     {
         var solicitud = await _context.Solicitudes.FindAsync(id);
