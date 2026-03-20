@@ -1,20 +1,11 @@
-using HCG.FondoRevolvente.Application.DTOs;
 using HCG.FondoRevolvente.Application.Interfaces;
-using HCG.FondoRevolvente.Domain.Constants;
 using HCG.FondoRevolvente.Domain.Entities;
-using HCG.FondoRevolvente.Domain.Enums;
+using System;
+using System.Threading.Tasks;
 
 namespace HCG.FondoRevolvente.Application.Services;
 
-public interface ISolicitudService
-{
-    Task<SolicitudDto> CreateAsync(CreateSolicitudDto dto, string usuarioActualId);
-    Task<SolicitudDto?> GetByIdAsync(int id);
-    Task<IEnumerable<SolicitudDto>> GetAllAsync();
-    Task UpdateAsync(int id, string usuarioActualId);
-}
-
-public class SolicitudService : ISolicitudService
+public class SolicitudService
 {
     private readonly ISolicitudRepository _repository;
 
@@ -23,98 +14,58 @@ public class SolicitudService : ISolicitudService
         _repository = repository;
     }
 
-    public async Task<SolicitudDto> CreateAsync(CreateSolicitudDto dto, string usuarioActualId)
+    public async Task<Solicitud> CrearNuevaSolicitudAsync(string usuarioActualId)
     {
-        var solicitud = new Solicitud
-        {
-            ConceptoGeneral = dto.ConceptoGeneral,
-            Justificacion = dto.Justificacion,
-            AreaSolicitante = dto.AreaSolicitante,
-            NombreResponsable = dto.NombreResponsable,
-            FechaRequerida = dto.FechaRequerida,
-            Folio = await GenerateFolioAsync()
-        };
+        var nuevaSolicitud = new Solicitud();
+        nuevaSolicitud.BloquearParaEdicion(usuarioActualId);
+        await _repository.AgregarAsync(nuevaSolicitud);
+        return nuevaSolicitud;
+    }
 
-        foreach (var p in dto.Partidas)
+    public async Task<Solicitud> ObtenerSolicitudAsync(int id)
+    {
+        var solicitud = await _repository.ObtenerPorIdAsync(id);
+        if (solicitud == null)
         {
-            solicitud.Partidas.Add(new Partida
-            {
-                CodigoProducto = p.CodigoProducto,
-                Descripcion = p.Descripcion,
-                Cantidad = (int)p.Cantidad,
-                PrecioUnitario = p.PrecioUnitario
-            });
+            throw new KeyNotFoundException($"Solicitud con ID {id} no encontrada.");
+        }
+        return solicitud;
+    }
+
+    public async Task ActualizarSolicitudAsync(int id, Solicitud solicitudActualizada, string usuarioActualId)
+    {
+        var solicitudDb = await _repository.ObtenerPorIdAsync(id);
+        if (solicitudDb == null) throw new KeyNotFoundException("La solicitud no existe.");
+
+        if (!solicitudDb.PuedeSerEditadaPor(usuarioActualId))
+        {
+            throw new InvalidOperationException($"El expediente está bloqueado y siendo editado por {solicitudDb.BloqueadoPor}");
         }
 
-        // Pragmatic logic from user:
-        solicitud.BloquearParaEdicion(usuarioActualId);
-        await AplicarReglasNegocio(solicitud, usuarioActualId);
-        
-        await _repository.AddAsync(solicitud);
-
-        return MapToDto(solicitud);
-    }
-
-    public async Task UpdateAsync(int id, string usuarioActualId)
-    {
-        var solicitud = await _repository.GetByIdAsync(id);
-        if (solicitud == null) throw new Exception("Solicitud no encontrada.");
-
-        if (!solicitud.PuedeSerEditadaPor(usuarioActualId))
+        // Copiar propiedades relevantes
+        solicitudDb.Partidas.Clear();
+        foreach (var partida in solicitudActualizada.Partidas)
         {
-            throw new Exception($"El expediente está siendo editado por {solicitud.BloqueadoPor ?? "desconocido"}.");
+            solicitudDb.AgregarPartida(partida);
         }
 
-        await AplicarReglasNegocio(solicitud, usuarioActualId);
-        solicitud.BloquearParaEdicion(usuarioActualId); // Renovar bloqueo
-        await _repository.SaveAsync(solicitud);
-    }
-
-    private async Task AplicarReglasNegocio(Solicitud solicitud, string usuarioActualId)
-    {
-        // RN-001: Validación de límite financiero
-        if (solicitud.ExcedeLimitePermitido())
+        if (solicitudDb.ExcedeLimitePermitido())
         {
-            throw new Exception($"El monto total ({solicitud.TotalMonto:C}) excede el límite permitido de {LimitesNegocio.MONTO_MAXIMO_SOLICITUD:C}.");
+            throw new InvalidOperationException("El monto total excede el límite permitido de $75,000.00 MXN para operaciones de Fondo Revolvente.");
         }
 
-        // RN-005: Verificación de permiso de edición
-        if (!solicitud.PuedeSerEditadaPor(usuarioActualId))
+        await _repository.ActualizarAsync(solicitudDb);
+    }
+
+    public async Task DesbloquearSolicitudAsync(int id, string usuarioActualId)
+    {
+        var solicitud = await _repository.ObtenerPorIdAsync(id);
+        if (solicitud == null) throw new KeyNotFoundException("La solicitud no existe.");
+
+        if (solicitud.BloqueadoPor == usuarioActualId)
         {
-             throw new Exception("La solicitud está bloqueada para edición por otro usuario.");
+            solicitud.LiberarBloqueo();
+            await _repository.ActualizarAsync(solicitud);
         }
     }
-
-    public async Task<SolicitudDto?> GetByIdAsync(int id)
-    {
-        var solicitud = await _repository.GetByIdAsync(id);
-        return solicitud != null ? MapToDto(solicitud) : null;
-    }
-
-    public async Task<IEnumerable<SolicitudDto>> GetAllAsync()
-    {
-        var solicitudes = await _repository.GetAllAsync();
-        return solicitudes.Select(MapToDto);
-    }
-
-    private async Task<string> GenerateFolioAsync()
-    {
-        var solicitudes = await _repository.GetAllAsync();
-        int count = solicitudes.Count() + 1;
-        return $"DSA-{DateTime.Now.Year}-{count:D3}";
-    }
-
-    private static SolicitudDto MapToDto(Solicitud s) => new SolicitudDto
-    {
-        Id = s.Id,
-        Folio = s.Folio,
-        ConceptoGeneral = s.ConceptoGeneral,
-        Justificacion = s.Justificacion,
-        AreaSolicitante = s.AreaSolicitante,
-        NombreResponsable = s.NombreResponsable,
-        FechaCreacion = s.FechaCreacion,
-        FechaRequerida = s.FechaRequerida,
-        Estado = s.Estado,
-        TotalMonto = s.TotalMonto
-    };
 }
