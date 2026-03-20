@@ -13,6 +13,7 @@
         "packagesPath": "/home/jesuslangarica/.nuget/packages/",
         "outputPath": "/home/jesuslangarica/Proyectos/DSA.FondoRevolvente/src/HCG.FondoRevolvente.Domain/obj/",
         "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
           "/home/jesuslangarica/.nuget/NuGet/NuGet.Config"
         ],
@@ -29,6 +30,9 @@
           }
         },
         "warningProperties": {
+          "noWarn": [
+            "NU1507"
+          ],
           "warnAsError": [
             "NU1605"
           ]
