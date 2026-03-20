@@ -1,0 +1,6 @@
+@HCG.FondoRevolvente.Api_HostAddress = http://localhost:5273
+
+GET {{HCG.FondoRevolvente.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
