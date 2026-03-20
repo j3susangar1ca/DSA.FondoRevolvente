@@ -14,55 +14,35 @@ public class SolicitudRepository : ISolicitudRepository
         _context = context;
     }
 
-    public async Task<Solicitud?> GetByIdAsync(int id)
+    public async Task<Solicitud?> ObtenerPorIdAsync(int id)
     {
         return await _context.Solicitudes
             .Include(s => s.Partidas)
-            .Include(s => s.Cotizaciones)
-            .ThenInclude(c => c.Proveedor)
             .FirstOrDefaultAsync(s => s.Id == id);
     }
 
-    public async Task<IEnumerable<Solicitud>> GetAllAsync()
+    public async Task<List<Solicitud>> ObtenerTodasAsync()
     {
         return await _context.Solicitudes
             .Include(s => s.Partidas)
             .ToListAsync();
     }
 
-    public async Task AddAsync(Solicitud solicitud)
+    public async Task AgregarAsync(Solicitud solicitud)
     {
         await _context.Solicitudes.AddAsync(solicitud);
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Solicitud solicitud)
+    public async Task ActualizarAsync(Solicitud solicitud)
     {
         _context.Solicitudes.Update(solicitud);
         await _context.SaveChangesAsync();
     }
 
-    public async Task SaveAsync(Solicitud solicitud)
+    public async Task<bool> ExisteAsync(int id)
     {
-        if (solicitud.Id == 0)
-        {
-            await _context.Solicitudes.AddAsync(solicitud);
-        }
-        else
-        {
-            _context.Solicitudes.Update(solicitud);
-        }
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var solicitud = await _context.Solicitudes.FindAsync(id);
-        if (solicitud != null)
-        {
-            _context.Solicitudes.Remove(solicitud);
-            await _context.SaveChangesAsync();
-        }
+        return await _context.Solicitudes.AnyAsync(s => s.Id == id);
     }
 }
 
